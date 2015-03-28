@@ -1,6 +1,6 @@
 # CSS4 for Meteor
 
-Preprocess CSS4 syntax using Rework, this module is based on (Basswork)(https://github.com/jxnblk/basswork) by [jxblk](https://github.com/jxnblk)
+Preprocess CSS4 syntax using Rework, this module is based on [Basswork](https://github.com/jxnblk/basswork) by [jxblk](https://github.com/jxnblk)
 
 #### Install
 ```
