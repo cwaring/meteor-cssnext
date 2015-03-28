@@ -2,7 +2,7 @@ Package.describe({
   name: 'kit:css4',
   version: '0.0.1',
   // Brief, one-line summary of the package.
-  summary: 'Transpiles CSS4 syntax using Rework',
+  summary: 'Transpile CSS4 using Rework',
   // URL to the Git repository containing the source code for this package.
   git: '',
   // By default, Meteor will default to using README.md for documentation.
