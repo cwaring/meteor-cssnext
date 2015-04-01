@@ -1,6 +1,8 @@
 # CSS4 for Meteor
 
-Preprocess CSS4 syntax using Rework, this package uses [Basswork](https://github.com/jxnblk/basswork) to compile the CSS
+Preprocess CSS4 syntax using Rework, this package uses [Basswork](https://github.com/jxnblk/basswork) to compile the CSS.
+
+Files with the `css4` extension will be compiled with package.
 
 #### Install
 ```
