@@ -3,23 +3,28 @@ var cssnext = Npm.require('cssnext')
 var handler = function (compileStep, isLiterate) {
 
   var source = compileStep.read().toString('utf8');
-  var outputFile = compileStep.inputPath.replace('.next', '');
+  var filename = compileStep.inputPath;
 
   try {
     var output = cssnext(source,
       {
         features: { rem: false },
-        from: compileStep.inputPath,
+        from: filename,
         sourcemap: true,
         map: { inline: false, annotation: false, sourcesContent: true }
       });
   } catch( e ) {
-    throw new Error(e);
+    compileStep.error({
+      message: "cssnext compiler error: " + e.message,
+      sourcePath: e.filename || compileStep.inputPath,
+      line: e.line,
+      column: e.column + 1
+    });
   }
 
   // Add the result to the app with sourcemaps
   compileStep.addStylesheet({
-    path: outputFile,
+    path: filename,
     data: output.css,
     sourceMap: JSON.stringify(output.map)
   });
