@@ -3,14 +3,13 @@ var cssnext = Npm.require('cssnext')
 var handler = function (compileStep, isLiterate) {
 
   var source = compileStep.read().toString('utf8');
-
   var outputFile = compileStep.inputPath.replace('.next', '');
+
   try {
     var output = cssnext(source,
       {
         features: { rem: false },
         from: compileStep.inputPath,
-        to: outputFile,
         sourcemap: true,
         map: { inline: false, annotation: false, sourcesContent: true }
       });
@@ -18,12 +17,19 @@ var handler = function (compileStep, isLiterate) {
     throw new Error(e);
   }
 
+  // Add the result to the app with sourcemaps
   compileStep.addStylesheet({
     path: outputFile,
     data: output.css,
-    sourceMap: output.map.toString()
+    sourceMap: JSON.stringify(output.map)
   });
 
 };
 
 Plugin.registerSourceHandler('next.css', {archMatching: 'web'}, handler);
+
+// Register import.css files with the dependency watcher, without actually
+// processing them. There is a similar rule in the stylus package.
+Plugin.registerSourceHandler("import.next.css", function () {
+  // Do nothing
+});
