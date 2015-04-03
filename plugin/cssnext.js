@@ -1,18 +1,27 @@
 var cssnext = Npm.require('cssnext')
+var _ = Npm.require('underscore');
 
 var handler = function (compileStep, isLiterate) {
 
   var source = compileStep.read().toString('utf8');
   var filename = compileStep.inputPath;
 
+  var options = {
+    features: { rem: false },
+    from: filename,
+    sourcemap: true,
+    map: { inline: false, annotation: false }
+  };
+
+  if (cssnextExtend) {
+    cssnextExtend.forEach(function(extension) {
+      options = _.extend(options, extension)
+    })
+    console.log(options);
+  }
+
   try {
-    var output = cssnext(source,
-      {
-        features: { rem: false },
-        from: filename,
-        sourcemap: true,
-        map: { inline: false, annotation: false, sourcesContent: true }
-      });
+    var output = cssnext(source, options);
   } catch( e ) {
     compileStep.error({
       message: "cssnext compiler error: " + e.message,

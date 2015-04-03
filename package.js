@@ -1,6 +1,6 @@
 Package.describe({
   name: 'kit:cssnext',
-  version: '0.0.1',
+  version: '0.1.0',
   summary: 'Transpile CSS4 to CSS3',
   git: 'https://github.com/cwaring/meteor-cssnext',
   documentation: 'README.md'
