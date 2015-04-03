@@ -1,23 +1,23 @@
 Package.describe({
-  name: 'kit:css4',
+  name: 'kit:cssnext',
   version: '0.0.1',
-  summary: 'Transpile CSS4 using Rework',
-  git: 'https://github.com/cwaring/meteor-css4',
+  summary: 'Transpile CSS4 to CSS3',
+  git: 'https://github.com/cwaring/meteor-cssnext',
   documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.0.5');
+  api.versionsFrom('1.0');
 });
 
 
 Package.registerBuildPlugin({
-  name: 'css4',
+  name: 'cssnext',
   use: [],
   sources: [
-  'plugin/css4.js'
+  'plugin/cssnext.js'
   ],
   npmDependencies: {
-    "basswork": "1.4.0"
+    "cssnext": "1.2.1"
   }
 });

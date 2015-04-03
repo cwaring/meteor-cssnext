@@ -1,12 +1,12 @@
-# CSS4 for Meteor
+# cssnext for Meteor
 
-Preprocess CSS4 syntax using Rework, this package uses [Basswork](https://github.com/jxnblk/basswork) to compile the CSS.
+Preprocess CSS4 syntax using [cssnext](https://github.com/cssnext/cssnext)
 
-Files with the `css4` extension will be compiled with package.
+Files with the `next.css` extension will be compiled with package.
 
 #### Install
 ```
-meteor add kit:css4
+meteor add kit:cssnext
 ```
 
 ---
