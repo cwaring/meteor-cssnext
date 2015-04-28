@@ -1,12 +1,13 @@
 var cssnext = Npm.require('cssnext')
 var _ = Npm.require('underscore');
 
-var handler = function (compileStep, isLiterate) {
-
+handler = function (compileStep, isLiterate) {
   var source = compileStep.read().toString('utf8');
   var filename = compileStep.inputPath;
+  var cssnextExtend = cssnextExtend || false;
+  options = options || {};
 
-  var options = {
+  var defaultOptions = {
     features: { rem: false },
     from: filename,
     sourcemap: true,
@@ -15,9 +16,8 @@ var handler = function (compileStep, isLiterate) {
 
   if (cssnextExtend) {
     cssnextExtend.forEach(function(extension) {
-      options = _.extend(options, extension)
+      options = _.extend(defaultOptions, extension)
     })
-    console.log(options);
   }
 
   try {
@@ -37,7 +37,6 @@ var handler = function (compileStep, isLiterate) {
     data: output.css,
     sourceMap: JSON.stringify(output.map)
   });
-
 };
 
 Plugin.registerSourceHandler('next.css', {archMatching: 'web'}, handler);

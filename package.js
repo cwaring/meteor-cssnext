@@ -10,14 +10,13 @@ Package.onUse(function(api) {
   api.versionsFrom('1.0');
 });
 
-
 Package.registerBuildPlugin({
   name: 'cssnext',
   use: [],
   sources: [
-  'plugin/cssnext.js'
+    'plugin/cssnext.js'
   ],
   npmDependencies: {
-    "cssnext": "1.2.1"
+    "cssnext": "1.3.0"
   }
 });
