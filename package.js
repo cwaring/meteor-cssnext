@@ -17,6 +17,6 @@ Package.registerBuildPlugin({
     'plugin/cssnext.js'
   ],
   npmDependencies: {
-    "cssnext": "1.3.0"
+    "cssnext": "1.8.0"
   }
 });
