@@ -3,7 +3,7 @@
 Preprocess CSS4 syntax using [cssnext](https://github.com/cssnext/cssnext)
 
 Files with the `next.css` extension will be compiled with package.
-You can also manually `@import` files with the `import.next.css` extension as 
+You can also manually `@import` files named `xxx.import.next.css` as 
 these will be excluded from the build pipeline.
 
 #### Install
