@@ -5,9 +5,8 @@ handler = function (compileStep, isLiterate) {
   var source = compileStep.read().toString('utf8');
   var filename = compileStep.inputPath;
   var cssnextExtend = cssnextExtend || false;
-  options = options || {};
 
-  var defaultOptions = {
+  var options = {
     features: { rem: false },
     from: filename,
     sourcemap: true,
@@ -16,12 +15,19 @@ handler = function (compileStep, isLiterate) {
 
   if (cssnextExtend) {
     cssnextExtend.forEach(function(extension) {
-      options = _.extend(defaultOptions, extension)
+      options = _.extend(options, extension)
     })
   }
 
   try {
     var output = cssnext(source, options);
+
+    // Add the result to the app with sourcemaps
+    compileStep.addStylesheet({
+      path: filename,
+      data: output.css,
+      sourceMap: JSON.stringify(output.map)
+    });
   } catch( e ) {
     compileStep.error({
       message: "cssnext compiler error: " + e.message,
@@ -30,13 +36,6 @@ handler = function (compileStep, isLiterate) {
       column: e.column + 1
     });
   }
-
-  // Add the result to the app with sourcemaps
-  compileStep.addStylesheet({
-    path: filename,
-    data: output.css,
-    sourceMap: JSON.stringify(output.map)
-  });
 };
 
 Plugin.registerSourceHandler('next.css', {archMatching: 'web'}, handler);
