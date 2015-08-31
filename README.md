@@ -3,8 +3,24 @@
 Preprocess CSS4 syntax using [cssnext](https://github.com/cssnext/cssnext)
 
 Files with the `next.css` extension will be compiled with package.
-You can also manually `@import` files named `xxx.import.next.css` as 
+You can also manually `@import` files named `xxx.import.next.css` as
 these will be excluded from the build pipeline.
+
+#Building a cssnext extension package
+
+`kit:cssnext` exports a global `compile` buildstep function which enables you to build extension packages that depend on this package.
+
+##Usage
+
+```
+/**
+ * Transpile CSS4 syntax to CSS3 with cssnext
+ * @param  {Object}  compileStep  Meteor compileStep object
+ * @param  {Boolean} isLiterate
+ * @param  {Object}  [cssnextExtend] cssnext compile options object
+ */
+CSSnext.compile(compileStep, isLiterate, cssnextExtend)
+```
 
 #### Install
 ```

@@ -1,6 +1,12 @@
 var cssnext = Npm.require('cssnext')
 var _ = Npm.require('underscore');
 
+/**
+ * Transpile CSS4 syntax to CSS3 with cssnext
+ * @param  {Object}  compileStep  Meteor compileStep object
+ * @param  {Boolean} isLiterate
+ * @param  {Object}  [cssnextExtend] cssnext compile options object
+ */
 var compile = function (compileStep, isLiterate, cssnextExtend) {
   var source = compileStep.read().toString('utf8');
   var filename = compileStep.inputPath;
