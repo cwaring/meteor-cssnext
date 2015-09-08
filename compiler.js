@@ -1,5 +1,4 @@
 var cssnext = Npm.require('cssnext')
-var _ = Npm.require('underscore');
 
 /**
  * Transpile CSS4 syntax to CSS3 with cssnext

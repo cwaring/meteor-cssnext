@@ -1,6 +1,6 @@
 Package.describe({
   name: 'kit:cssnext',
-  version: '0.3.1',
+  version: '0.3.2',
   summary: 'Transpile CSS4 to CSS3',
   git: 'https://github.com/cwaring/meteor-cssnext',
   documentation: 'README.md'
@@ -8,6 +8,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
+  api.use(['underscore'], ['server']);
   api.addFiles('compiler.js', 'server');
   api.export('Cssnext', 'server');
 });
