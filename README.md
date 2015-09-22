@@ -6,20 +6,23 @@ Files with the `next.css` extension will be compiled with package.
 You can also manually `@import` files named `xxx.import.next.css` as
 these will be excluded from the build pipeline.
 
-#Building a cssnext extension package
+# Building a cssnext extension package
 
-`kit:cssnext` exports a global `compile` buildstep function which enables you to build extension packages that depend on this package.
+`kit:cssnext` exports a global `CssnextCompiler` class which enables you to build extension packages that depend on this package.
 
-##Usage
+## Example Usage
 
 ```
+// Meteor 1.2.x
+
 /**
  * Transpile CSS4 syntax to CSS3 with cssnext
- * @param  {Object}  compileStep  Meteor compileStep object
- * @param  {Boolean} isLiterate
- * @param  {Object}  [cssnextExtend] cssnext compile options object
+ * @param  {Object}  [cssnextOptions] cssnext compile options object
  */
-CSSnext.compile(compileStep, isLiterate, cssnextExtend)
+ Plugin.registerCompiler({
+   filenames: ['xxx.next.css'],
+   archMatching: 'web',
+ }, function () { return new CssnextCompiler(cssnextOptions) } );
 ```
 
 #### Install

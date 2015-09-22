@@ -1,16 +1,18 @@
 Package.describe({
   name: 'kit:cssnext',
-  version: '0.3.3',
+  version: '1.0.0',
   summary: 'Transpile CSS4 to CSS3',
   git: 'https://github.com/cwaring/meteor-cssnext',
   documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.0');
-  api.use(['underscore'], ['server']);
+  api.versionsFrom('1.2');
+  api.use('isobuild:compiler-plugin@1.0.0');
+  api.use(['ecmascript','underscore'], ['server']);
+
   api.addFiles('compiler.js', 'server');
-  api.export('Cssnext', 'server');
+  api.export('CssnextCompiler', 'server');
 });
 
 var npmDependencies = {
@@ -21,7 +23,7 @@ Npm.depends(npmDependencies)
 
 Package.registerBuildPlugin({
   name: 'cssnext',
-  use: [],
+  use: ['ecmascript', 'underscore'],
   sources: [
     'compiler.js',
     'plugin/cssnext.js'
