@@ -8,7 +8,7 @@ CssnextCompiler = class CssnextCompiler {
     }
 
     if (options) this.options = {...this.options, ...options}
-    
+
   }
   processFilesForTarget (files) {
     files.forEach((compileStep) => {
@@ -16,7 +16,7 @@ CssnextCompiler = class CssnextCompiler {
       if (compileStep.getBasename().endsWith('import.next.css')) return
 
       let source = compileStep.getContentsAsString()
-      let filename = compileStep.getPathInPackage(); //getPathInPackage() has no leading slash, allow cssnext @import to work with relative path
+      let filename = compileStep.getPathInPackage()
       let options = {...this.options, from: filename}
 
       try {
