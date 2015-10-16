@@ -9,7 +9,7 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.2');
   api.use('isobuild:compiler-plugin@1.0.0');
-  api.use(['ecmascript','underscore'], ['server']);
+  api.use(['ecmascript'], ['server']);
 
   api.addFiles('compiler.js', 'server');
   api.export('CssnextCompiler', 'server');
